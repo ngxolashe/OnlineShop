@@ -1,5 +1,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using WebDriverManager.DriverConfigs.Impl;
+using WebDriverManager;
 
 namespace KlipBoardTechAutomation.Core.Drivers
 {
@@ -7,9 +9,14 @@ namespace KlipBoardTechAutomation.Core.Drivers
     {
         public static IWebDriver CreateDriver()
         {
+            new DriverManager().SetUpDriver(new ChromeConfig());
+
             var options = new ChromeOptions();
-            options.AddArgument("--start-maximized");
-            return new ChromeDriver(options);
+            var driver = new ChromeDriver(options);
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
+            return driver;
         }
     }
 }

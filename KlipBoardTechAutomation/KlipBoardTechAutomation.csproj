@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="TestResults\**" />
+    <EmbeddedResource Remove="TestResults\**" />
+    <None Remove="TestResults\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Aspire.Hosting.Testing" Version="9.5.2" />
     <PackageReference Include="coverlet.collector" Version="6.0.4">
       <PrivateAssets>all</PrivateAssets>
@@ -38,11 +44,10 @@
 
   <ItemGroup>
     <Folder Include="Core\Drivers\" />
-    <Folder Include="Core\Configuration\" />
     <Folder Include="Helpers\" />
     <Folder Include="TestData\" />
+	  <Folder Include="TestResults\Screenshots" />
     <Folder Include="Pages\" />
-    <Folder Include="Tests\" />
     <Folder Include="Utils\" />
   </ItemGroup>
 

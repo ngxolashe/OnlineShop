@@ -1,33 +1,26 @@
-using KlipBoardTechAutomation.Core.Drivers;
-using NUnit.Framework;
 using OnlineShop.Pages;
-using OpenQA.Selenium;
 
-namespace OnlineShop.Tests
+namespace KlipBoardTechAutomation.Tests
 {
-    public class HomePageTests
+    public class HomePageTests : BaseTest
     {
-        private IWebDriver _driver;
         private HomePage _homePage;
 
         [SetUp]
-        public void SetUp()
+        public void TestSetup()
         {
-            _driver = DriverFactory.CreateDriver();
-            _homePage = new HomePage(_driver);
+            _homePage = new HomePage(Driver);
         }
 
         [Test]
-        public void HomePage_Should_Display_LoginLink()
+        public void HomePage_Should_Display_BasicElements()
         {
             _homePage.GoTo();
-            Assert.That(_homePage.LoginLink.Displayed, Is.True, "Login link should be displayed on home page");
-        }
 
-        [TearDown]
-        public void TearDown()
-        {
-            _driver.Quit();
+            Assert.Multiple(() =>
+            {
+                Assert.That(_homePage.LoginLink.Displayed, Is.True, "Login link should be displayed");
+            });
         }
     }
 }

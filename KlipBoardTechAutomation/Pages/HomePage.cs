@@ -2,21 +2,16 @@ using OpenQA.Selenium;
 
 namespace OnlineShop.Pages
 {
-    public class HomePage
+    public class HomePage : BasePage
     {
-        private readonly IWebDriver _driver;
-        private readonly string _url = "https://automationteststore.com/";
+        protected override string PageUrl => "https://automationteststore.com/";
 
-        public HomePage(IWebDriver driver)
-        {
-            _driver = driver;
-        }
+        // Locators
+        private readonly By _loginLinkLocator = By.LinkText("Login or register");
 
-        public void GoTo()
-        {
-            _driver.Navigate().GoToUrl(_url);
-        }
+        public HomePage(IWebDriver driver) : base(driver) { }
 
-        public IWebElement LoginLink => _driver.FindElement(By.LinkText("Login or register"));
+        public IWebElement LoginLink => WaitAndFindElement(_loginLinkLocator);
+
     }
 }
