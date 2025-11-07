@@ -8,7 +8,7 @@ namespace OnlineShop.Pages
     {
         protected readonly IWebDriver Driver;
         protected readonly WebDriverWait Wait;
-        protected abstract string PageUrl { get; }
+        protected string PageUrl = "https://automationteststore.com/";
 
         protected BasePage(IWebDriver driver)
         {
@@ -25,6 +25,19 @@ namespace OnlineShop.Pages
         {
             Driver.Navigate().GoToUrl(PageUrl);
         }
+
+        // Locators
+        private readonly By _loginLinkLocator = By.LinkText("Login or register");
+
+        private readonly By _home = By.LinkText("Home");
+
+        private readonly By _apparel = By.LinkText("Apparel & accessories");
+
+        public IWebElement LoginLink => WaitAndFindElement(_loginLinkLocator);
+
+        public IWebElement Home => WaitAndFindElement(_home);
+
+        public IWebElement Apparel => WaitAndFindElement(_apparel);
 
     }
 }

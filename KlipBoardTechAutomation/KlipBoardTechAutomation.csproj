@@ -47,7 +47,6 @@
     <Folder Include="Helpers\" />
     <Folder Include="TestData\" />
 	  <Folder Include="TestResults\Screenshots" />
-    <Folder Include="Pages\" />
     <Folder Include="Utils\" />
   </ItemGroup>
 
