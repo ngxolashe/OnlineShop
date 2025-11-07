@@ -13,7 +13,7 @@ namespace KlipBoardTechAutomation.Tests
             _registerPage = new RegisterPage(Driver);
         }
 
-        [Test, Ignore("Tested Already")]
+        [Test]
         public void Register_Should_Create_New_Account()
         {
 
